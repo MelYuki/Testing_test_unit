@@ -1,21 +1,23 @@
 # Les différents types de tests
 
 ## Tests unitaires
-    - Vérification des petites unités de code, indépendamment du reste
-    - ex : Une fonction divisant deux nombres -> Vérifier qu'elle divise bien les deux nombres fournis. Si on veut gérer la division par 0, on fera alors un autre test.
+Vérification des petites unités de code, indépendamment du reste
+
+Ex : Une fonction divisant deux nombres -> Vérifier qu'elle divise bien les deux nombres fournis. Si on veut gérer la division par 0, on fera alors un autre test.
 
 ## Tests d'intégration
-    - On regroupe chaque partie testée unitairement (ou non) pour en faire un gros "module" à tester. On vérifie que tout l'ensemble fonctionne dans la globalité
-    - ex : Tester toute la fonctionnalité de Login/Register dans son ensemble (Erreurs Formulaire, Ajout/Get en DB se fasse, Gestion du Token etc  etc)
+On regroupe chaque partie testée unitairement (ou non) pour en faire un gros "module" à tester. On vérifie que tout l'ensemble fonctionne dans la globalité
+
+Ex : Tester toute la fonctionnalité de Login/Register dans son ensemble (Erreurs Formulaire, Ajout/Get en DB se fasse, Gestion du Token etc  etc)
 
 ## Tests de charge
-    - Simuler une énorme charge de personnes/données/récupération de données sur notre site/app
-    - Plusieurs niveaux : DB, Serveur, Site/App
-    - Bibliothèques de simulation de charge
+Simuler une énorme charge de personnes/données/récupération de données sur notre site/app
+Plusieurs niveaux : DB, Serveur, Site/App
+Bibliothèques de simulation de charge
 
 ## Tests de validation
-    - Comparer le cahier des charges à notre produit/nos fonctionnalités
-    - Ca va de vérifier que le déroulement de toute une action se déroule correctement à vérifier qu'un bouton est bien carré, bleu et que quand on passe la souris dessus il devient vert fluo
+Comparer le cahier des charges à notre produit/nos fonctionnalités
+Ca va de vérifier que le déroulement de toute une action se déroule correctement à vérifier qu'un bouton est bien carré, bleu et que quand on passe la souris dessus il devient vert fluo
 
 # Tests unitaires
 ## Méthodologie : Le TDD (Test Driven Development)
@@ -52,3 +54,29 @@ Les trois règles d'or :
 <br><br><br>
 
 # Test unitaire en NodeJS
+Solutions les plus "populaires" :
+- Mocha (Test Runner) : https://mochajs.org/
+    - Chai : https://www.chaijs.com/
+- Jest (Test Framework) : https://jestjs.io/docs/api
+
+Doc Mocha VS Jest : https://www.merixstudio.com/blog/mocha-vs-jest/
+
+## Installations 
+A installer dans les dépendances de dev puisqu'on n'en a besoin qu'en dev.
+
+Si --save-dev pas précisé, s'installe dans les dépendances de tout le projet (dev, prod etc)
+```
+    npm i --save-dev mocha
+```
+
+## Configuration commande test dans le package.json
+Ajouter dans les scripts :
+```
+     "test": "mocha ./src/**/*.test.js ",
+```
+Qui indique à Mocha d'exécuter tous les fichers se terminant par test.js (*.test.js) qui se trouvent dans n'importe quel dossier (/**/) dans le dossier src
+
+Pour lancer le projet en mode test : 
+```
+    npm test
+```
